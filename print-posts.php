@@ -44,45 +44,20 @@
 
 			<span class="hat">
 				<strong>
-					- <?php bloginfo('name'); ?> 
-					- 
-					<span dir="ltr"><?php bloginfo('url')?></span> 
+					- <?php bloginfo('name'); ?>
+					-
+					<span dir="ltr"><?php bloginfo('url')?></span>
 					-
 				</strong>
 			</span>
-			
+
 			<?php while (have_posts()): the_post(); ?>
 
 			<h1 class="entry-title">
-				<?php the_title(); ?>
+				<!-- @ADDED: Titles are link to pages -->
+				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 			</h1>
-
-			<span class="entry-date">
-
-				<?php _e('Posted By', 'wp-print'); ?> 
-
-				<cite><?php the_author(); ?></cite> 
-
-				<?php _e('On', 'wp-print'); ?> 
-
-				<time>	
-					<?php the_time(sprintf(__('%s @ %s', 'wp-print'), 
-						get_option('date_format'), 
-						get_option('time_format'))); 
-					?> 
-				</time>
-
-			  	<span>
-			  		<?php _e('In', 'wp-print'); ?> 
-			  		<?php print_categories(); ?> | 
-			  	</span>	
-
-		  		<a href='#comments_controls'>
-		  			<?php print_comments_number(); ?>
-	  			</a>	  			
-
-				</span>
-			
+			<!-- @ADDED: Deleted all the information below the title: Posted by; Date; Comments -->
 		</header>
 
 		<?php if(print_can('thumbnail')): ?>
@@ -100,17 +75,14 @@
 		</div>
 
 	<?php endwhile; ?>
-	
-	<div class="comments">
-		<?php if(print_can('comments')): ?>
-			<?php comments_template(); ?>
-		<?php endif; ?>
-	</div>
-	
+
+	<!-- @ADDED: deleting comments -->
+
+
 	<footer class="footer">
 		<p>
-			<?php _e('Article printed from', 'wp-print'); ?> 
-			<?php bloginfo('name'); ?>: 
+			<?php _e('Article printed from', 'wp-print'); ?>
+			<?php bloginfo('name'); ?>:
 
 			<strong dir="ltr">
 				<?php bloginfo('url'); ?>
@@ -118,22 +90,22 @@
 		</p>
 
 		<p>
-			<?php _e('URL to article', 'wp-print'); ?>: 
+			<?php _e('URL to article', 'wp-print'); ?>:
 			<strong dir="ltr">
 				<?php the_permalink(); ?>
 			</strong>
 		</p>
-		
+
 		<?php if(print_can('links')): ?>
 			<p><?php print_links(); ?></p>
 		<?php endif; ?>
 
 		<p style="text-align: <?php echo ( is_rtl() ) ? 'left' : 'right'; ?>;" id="print-link">
 			<a href="#Print" onclick="window.print(); return false;" title="<?php _e('Click here to print.', 'wp-print'); ?>">
-				<?php _e('Click', 'wp-print'); ?> 
+				<?php _e('Click', 'wp-print'); ?>
 				<?php _e('here', 'wp-print'); ?>
 				<?php _e('to print.', 'wp-print'); ?>
-			</a> 
+			</a>
 		</p>
 
 		<?php else: ?>
@@ -143,7 +115,8 @@
 		<?php endif; ?>
 
 		<p style="text-align: center;">
-			<?php echo stripslashes($print_options['disclaimer']); ?>
+		Copyright © 2020 <a href="https://books4languages.com/">Books4Languages</a>. All rights reserved.<br>
+		Educators, <a href="https://books4languages.com/legal/">Some Rights Reserved.</a>
 		</p>
 	</footer>
 

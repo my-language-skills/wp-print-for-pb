@@ -10,8 +10,8 @@ body {
 }
 hr { display: none; }
 img { max-width: 100%; }
-p { 
-	word-wrap: break-word; 
+p {
+	word-wrap: break-word;
 	margin-bottom: 15px;
 }
 a { color: inherit; }
@@ -67,9 +67,18 @@ pre {
 @media print {
     #comments_controls,
     #print-link {
-        display: none;
+        display: block;
     }
+		a::after{
+			content: " (" attr(href) ") ";
+		}
 }
+
+
+
+
+
+
 .alignleft, .alignleft {
 	float: left;
 	margin: 10px 10px 5px 0;

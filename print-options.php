@@ -15,12 +15,12 @@ if( ! empty( $_POST['Submit'] ) ) {
     $print_options['print_icon']        = ! empty( $_POST['print_icon'] )       ? trim( $_POST['print_icon'] ) : '';
     $print_options['print_style']       = isset( $_POST['print_style'] )        ? intval($_POST['print_style'] ) : 1;
     $print_options['print_html']        = ! empty( $_POST['print_html'] )       ? trim( $_POST['print_html'] ) : '';
-    $print_options['comments']          = isset( $_POST['print_comments'] )     ? intval( $_POST['print_comments'] ): 0;
+    // $print_options['comments']          = isset( $_POST['print_comments'] )     ? intval( $_POST['print_comments'] ): 0;
     $print_options['links']             = isset( $_POST['print_links'] )        ? intval( $_POST['print_links'] ) : 1;
     $print_options['images']            = isset( $_POST['print_images'] )       ? intval( $_POST['print_images'] ) : 0;
     $print_options['thumbnail']         = isset( $_POST['print_thumbnail'] )    ? intval( $_POST['print_thumbnail'] ) : 0;
     $print_options['videos']            = isset( $_POST['print_videos'] )       ? intval( $_POST['print_videos'] ) : 1;
-    $print_options['disclaimer']        = ! empty( $_POST['print_disclaimer'] ) ? trim( $_POST['print_disclaimer'] ) : '';
+    // $print_options['disclaimer']        = ! empty( $_POST['print_disclaimer'] ) ? trim( $_POST['print_disclaimer'] ) : '';
     $update_print_queries = array();
     $update_print_text = array();
     $update_print_queries[] = update_option( 'print_options', $print_options );
@@ -123,28 +123,14 @@ $print_options = get_option( 'print_options' );
                     <option value="3"<?php selected('3', $print_options['print_style']); ?>><?php _e('Print Text Link Only', 'wp-print'); ?></option>
                     <option value="4"<?php selected('4', $print_options['print_style']); ?>><?php _e('Custom', 'wp-print'); ?></option>
                 </select>
-                <div id="print_style_custom" style="display: <?php if(intval($print_options['print_style']) == 4) { echo 'block'; } else { echo 'none'; } ?>; margin-top: 20px;">
-                    <textarea rows="2" cols="80" name="print_html" id="print_template_html"><?php echo htmlspecialchars(stripslashes($print_options['print_html'])); ?></textarea><br />
-                    <?php _e('HTML is allowed.', 'wp-print'); ?><br />
-                    %PRINT_URL% - <?php _e('URL to the printable post/page.', 'wp-print'); ?><br />
-                    %PRINT_TEXT% - <?php _e('Print text link of the post/page that you have typed in above.', 'wp-print'); ?><br />
-                    %PRINT_ICON_URL% - <?php _e('URL to the print icon you have chosen above.', 'wp-print'); ?><br />
-                    <input type="button" name="RestoreDefault" value="<?php _e('Restore Default Template', 'wp-print'); ?>" onclick="print_default_templates('html');" class="button" />
-                </div>
+                <!-- @ADDED: deleting comments -->
+
             </td>
         </tr>
     </table>
     <h3><?php _e('Print Options', 'wp-print'); ?></h3>
     <table class="form-table">
-         <tr>
-            <th scope="row" valign="top"><?php _e('Print Comments?', 'wp-print'); ?></th>
-            <td>
-                <select name="print_comments" size="1">
-                    <option value="1"<?php selected('1', $print_options['comments']); ?>><?php _e('Yes', 'wp-print'); ?></option>
-                    <option value="0"<?php selected('0', $print_options['comments']); ?>><?php _e('No', 'wp-print'); ?></option>
-                </select>
-            </td>
-        </tr>
+<!-- @ADDED: deleting comments -->
         <tr>
             <th scope="row" valign="top"><?php _e('Print Links?', 'wp-print'); ?></th>
             <td>
@@ -181,16 +167,8 @@ $print_options = get_option( 'print_options' );
                 </select>
             </td>
         </tr>
-        <tr>
-            <th scope="row" valign="top">
-                <?php _e('Disclaimer/Copyright Text?', 'wp-print'); ?>
-                <br /><br />
-                <input type="button" name="RestoreDefault" value="<?php _e('Restore Default Template', 'wp-print'); ?>" onclick="print_default_templates('disclaimer');" class="button" />
-            </th>
-            <td>
-                <textarea rows="2" cols="80" name="print_disclaimer" id="print_template_disclaimer"><?php echo htmlspecialchars(stripslashes($print_options['disclaimer'])); ?></textarea><br /><?php _e('HTML is allowed.', 'wp-print'); ?><br />
-            </td>
-        </tr>
+        <!-- @ADDED: deleting comments -->
+
     </table>
     <p class="submit">
         <input type="submit" name="Submit" class="button" value="<?php _e('Save Changes', 'wp-print'); ?>" />

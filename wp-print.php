@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: WP-Print
+Plugin Name: WP-Print for PB
 Plugin URI: http://lesterchan.net/portfolio/programming/php/
-Description: Displays a printable version of your WordPress blog's post/page.
-Version: 2.58.1
-Author: Lester 'GaMerZ' Chan
-Author URI: http://lesterchan.net
+Description: Displays a printable version of your WordPress blog's post/page. Based on WP-Print Version: 2.58.1 Lester 'GaMerZ' Chan
+Version: 2
+Author: Colomet
+Author URI: http://books4languages.com
 Text Domain: wp-print
 */
 
@@ -245,81 +245,8 @@ function print_categories($before = '', $after = '') {
 }
 
 
-### Function: Print Comments Content
-function print_comments_content($display = true) {
-	global $links_text, $link_number, $max_link_number, $matched_links;
-	if (!isset($matched_links)) {
-		$matched_links = array();
-	}
-	$content  = get_comment_text();
-	$content = apply_filters('comment_text', $content);
-	if(!print_can('images')) {
-		$content = remove_image($content);
-	}
-	if(!print_can('videos')) {
-		$content = remove_video($content);
-	}
-	if(print_can('links')) {
-		preg_match_all('/<a(.+?)href=[\"\'](.+?)[\"\'](.*?)>(.+?)<\/a>/', $content, $matches);
-		for ($i=0; $i < count($matches[0]); $i++) {
-			$link_match = $matches[0][$i];
-			$link_url = $matches[2][$i];
-			if(stristr($link_url, 'https://')) {
-				 $link_url =(strtolower(substr($link_url,0,8)) != 'https://') ?get_option('home') . $link_url : $link_url;
-			} else if(stristr($link_url, 'mailto:')) {
-				$link_url =(strtolower(substr($link_url,0,7)) != 'mailto:') ?get_option('home') . $link_url : $link_url;
-			} else if($link_url[0] == '#') {
-				$link_url = $link_url;
-			} else {
-				$link_url =(strtolower(substr($link_url,0,7)) != 'http://') ?get_option('home') . $link_url : $link_url;
-			}
-			$new_link = true;
-			$link_url_hash = md5($link_url);
-			if (!isset($matched_links[$link_url_hash])) {
-				$link_number = ++$max_link_number;
-				$matched_links[$link_url_hash] = $link_number;
-			} else {
-				$new_link = false;
-				$link_number = $matched_links[$link_url_hash];
-			}
-			$content = str_replace_one($link_match, "<a href=\"$link_url\" rel=\"external\">".$link_text.'</a> <sup>['.number_format_i18n($link_number).']</sup>', $content);
-			if ($new_link) {
-				if(preg_match('/<img(.+?)src=[\"\'](.+?)[\"\'](.*?)>/',$link_text)) {
-					$links_text .= '<p style="margin: 2px 0;">['.number_format_i18n($link_number).'] '.__('Image', 'wp-print').': <b><span dir="ltr">'.$link_url.'</span></b></p>';
-				} else {
-					$links_text .= '<p style="margin: 2px 0;">['.number_format_i18n($link_number).'] '.$link_text.': <b><span dir="ltr">'.$link_url.'</span></b></p>';
-				}
-			}
-		}
-	}
-	if($display) {
-		echo $content;
-	} else {
-		return $content;
-	}
-}
+/* @ADDED: deleting comments */
 
-
-### Function: Print Comments
-function print_comments_number() {
-	global $post;
-	$comment_status = $post->comment_status;
-	if($comment_status == 'open') {
-		$num_comments = get_comments_number();
-		if($num_comments == 0) {
-			$comment_text = __('No Comments', 'wp-print');
-		} else {
-			$comment_text = sprintf(_n('%s Comment', '%s Comments', $num_comments, 'wp-print'), number_format_i18n($num_comments));
-		}
-	} else {
-		$comment_text = __('Comments Disabled', 'wp-print');
-	}
-	if(post_password_required()) {
-		_e('Comments Hidden', 'wp-print');
-	} else {
-		echo $comment_text;
-	}
-}
 
 
 ### Function: Print Links
@@ -345,15 +272,8 @@ function wp_print() {
 }
 
 
-### Function: Add Print Comments Template
-function print_template_comments() {
-	if(file_exists(get_stylesheet_directory().'/print-comments.php')) {
-		$file = get_stylesheet_directory().'/print-comments.php';
-	} else {
-		$file = WP_PLUGIN_DIR.'/wp-print/print-comments.php';
-	}
-	return $file;
-}
+/* @ADDED: deleting comments */
+
 
 
 ### Function: Print Page Title
@@ -411,7 +331,7 @@ function print_activation( $network_wide ) {
 		'print_icon'  => 'print.gif',
 		'print_style' => 1,
 		'print_html'  => '<a href="%PRINT_URL%" rel="nofollow" title="%PRINT_TEXT%">%PRINT_TEXT%</a>',
-		'comments'    => 0,
+		// 'comments'    => 0,
 		'links'       => 1,
 		'images'      => 1,
 		'thumbnail'   => 0,

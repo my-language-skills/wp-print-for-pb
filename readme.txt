@@ -1,5 +1,5 @@
-# WP-Print
-Contributors: GamerZ  
+# WP-Print for PB
+Contributors: Colomet  
 Donate link: http://lesterchan.net/site/donation/  
 Tags: print, printer, wp-print  
 Requires at least: 4.0  

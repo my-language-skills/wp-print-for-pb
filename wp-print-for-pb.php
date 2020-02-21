@@ -3,10 +3,10 @@
 Plugin Name: 	WP-Print for PB
 Plugin URI: 	http://lesterchan.net/portfolio/programming/php/
 Description: 	Displays a printable version of your WordPress blog's post/page. Based on WP-Print Version: 2.58.1 Lester 'GaMerZ' Chan
-Version: 			2
+Version: 			100.0
 Author: 			Colomet
 Author URI: 	http://books4languages.com
-Text Domain:	wp-print
+Text Domain:	wp-print-for-pb
 * Network: 		False
 */
 

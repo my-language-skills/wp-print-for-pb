@@ -1,3 +1,10 @@
+/* Mistape */
+
+.mistape_caption {
+   display: none;
+}
+
+/* WP-Print */
 body {
 	font-family: Verdana, Arial, Tahoma;
 	font-size: 14px;
@@ -18,8 +25,8 @@ a { color: inherit; }
 
 /*  Header */
 .entry-header {
-	margin-bottom: 25px;
-	padding-bottom: 25px;
+	margin-bottom: 5px; /* 25px; */
+	padding-bottom: 5px; /* 25px; */
 	border-bottom: 1px solid #555;
 }
 .hat {
@@ -33,7 +40,7 @@ a { color: inherit; }
 	font-size: 21px;
 	margin-bottom: 5px;
 }
-#CommentTitle { margin-bottom: 15px; }
+/* #CommentTitle { margin-bottom: 15px; } */
 
 /* Main */
 .center {
@@ -49,7 +56,7 @@ a { color: inherit; }
 
 /* content */
 .entry-content {
-	margin-bottom: 35px;
+	margin-bottom: 5px; /* 35px; */
 	line-height: 170%;
 }
 
@@ -69,13 +76,10 @@ pre {
     #print-link {
         display: block;
     }
-		a::after{
+		/* a::after{
 			content: " (" attr(href) ") ";
-		}
+		} */
 }
-
-
-
 
 
 

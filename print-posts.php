@@ -17,7 +17,8 @@
 <head>
 	<title><?php bloginfo('name'); ?> <?php wp_title(); ?></title>
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-	<meta name="Robots" content="noindex, nofollow" />
+	<!-- <meta name="Robots" content="noindex, nofollow" /> -->
+		<link rel=”canonical” href=”<?php the_permalink(); ?>” /><!-- New Cannonical url /> -->
 	<?php if(@file_exists(get_stylesheet_directory().'/print-css.css')): ?>
 		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/print-css.css" type="text/css" media="screen, print" />
 	<?php elseif(@file_exists(get_template_directory().'/print-css.css')): ?>

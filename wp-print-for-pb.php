@@ -1,12 +1,13 @@
 <?php
 /*
-Plugin Name: WP-Print for PB
-Plugin URI: http://lesterchan.net/portfolio/programming/php/
-Description: Displays a printable version of your WordPress blog's post/page. Based on WP-Print Version: 2.58.1 Lester 'GaMerZ' Chan
-Version: 2
-Author: Colomet
-Author URI: http://books4languages.com
-Text Domain: wp-print
+Plugin Name: 	WP-Print for PB
+Plugin URI: 	http://lesterchan.net/portfolio/programming/php/
+Description: 	Displays a printable version of your WordPress blog's post/page. Based on WP-Print Version: 2.58.1 Lester 'GaMerZ' Chan
+Version: 			2
+Author: 			Colomet
+Author URI: 	http://books4languages.com
+Text Domain:	wp-print
+* Network: 		False
 */
 
 

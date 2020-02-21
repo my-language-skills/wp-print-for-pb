@@ -71,6 +71,8 @@ $print_options = get_option( 'print_options' );
 <div class="wrap">
     <?php screen_icon(); ?>
     <h2><?php _e('Print Options', 'wp-print'); ?></h2>
+    <h3><?php _e('Print Links', 'wp-print'); ?></h3>
+    <p> Access to permalinks settings page:  <a href="<?php bloginfo('url')?>/wp-admin/options-permalink.php ">Permalinks.</a></p>
     <h3><?php _e('Print Styles', 'wp-print'); ?></h3>
     <table class="form-table">
         <tr>

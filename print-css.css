@@ -4,6 +4,17 @@
    display: none;
 }
 
+/* Sections Educational Book Exercise */
+	.textbox.textbox--exercise {
+    display: none;
+}
+
+/* Sections hustle-ui */
+	.hustle-ui {
+    display: none;
+}
+
+
 /* WP-Print */
 body {
 	font-family: Verdana, Arial, Tahoma;

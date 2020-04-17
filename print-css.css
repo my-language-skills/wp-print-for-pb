@@ -3,17 +3,15 @@
 .mistape_caption {
    display: none;
 }
-
 /* Sections Educational Book Exercise */
-	.textbox.textbox--exercise {
-    display: none;
-}
+h2 { margin: 10px; }
+.textbox.textbox--exercise { display: none; }
+.textbox.textbox--summary { display: none; }
 
 /* Sections hustle-ui */
 	.hustle-ui {
     display: none;
 }
-
 
 /* WP-Print */
 body {

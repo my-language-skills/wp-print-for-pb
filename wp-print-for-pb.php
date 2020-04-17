@@ -110,7 +110,7 @@ function print_link($print_post_text = '', $print_page_text = '', $echo = true) 
 	switch($print_style) {
 		// Icon + Text Link
 		case 1:
-			$output = '<a href="'.$print_link.'" title="'.$print_text.'" rel="nofollow"><img class="WP-PrintIcon" src="'.$print_icon.'" alt="'.$print_text.'" title="'.$print_text.'" style="border: 0px;" /></a>&nbsp;<a href="'.$print_link.'" title="'.$print_text.'" rel="nofollow">'.$print_text.'</a>';
+			$output = '<a href="'.$print_link.'" title="'.$print_text.'" target="_blank" rel="nofollow"><img class="WP-PrintIcon" src="'.$print_icon.'" alt="'.$print_text.'" title="'.$print_text.'" style="border: 0px;" /></a>&nbsp;<a href="'.$print_link.'" title="'.$print_text.'" target="_blank" rel="nofollow">'.$print_text.'</a>';
 			break;
 		// Icon Only
 		case 2:
